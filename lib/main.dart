@@ -12,7 +12,7 @@ final kDarkColorScheme = ColorScheme.fromSeed(
 ThemeData buildTheme(ColorScheme scheme) {
   final base = ThemeData(colorScheme: scheme, useMaterial3: true);
   return base.copyWith(
-    textTheme: GoogleFonts.poppinsTextTheme(base.textTheme),
+    textTheme: base.textTheme.apply(fontFamily: GoogleFonts.poppins().fontFamily),
     appBarTheme: AppBarTheme(
       backgroundColor: scheme.primary,
       foregroundColor: scheme.onPrimary,
