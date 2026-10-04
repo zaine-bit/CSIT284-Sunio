@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:expense_tracker/widgets/expenses.dart';
 
-// Custom palette: deep teal (light) and soft mint (dark)
 final kColorScheme = ColorScheme.fromSeed(seedColor: const Color(0xFF00796B));
 final kDarkColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
