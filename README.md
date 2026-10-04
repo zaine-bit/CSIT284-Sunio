@@ -1,17 +1,13 @@
-# expense_tracker
+# Expense Tracker (Flutter)
 
-A new Flutter project.
+Lesson 5 – Interactivity & Theming.
 
-## Getting Started
+**From the lesson:** stateful widgets, TextFields + controllers, date picker,
+dropdown, modal bottom sheet, validation dialog, Dismissible + SnackBar undo,
+app-wide light/dark `ThemeData` built from a `ColorScheme.fromSeed`.
 
-This project is a starting point for a Flutter application.
+**My additions:** custom teal palette, Poppins font via `google_fonts`,
+gradient summary card with animated total and per-category bars, animated
+empty-state/list switch, floating action button, rounded card/button/sheet themes.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Run: `flutter pub get && flutter run`
