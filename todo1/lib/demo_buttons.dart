@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DemoButtons extends StatefulWidget{
-  const DemoButtons({super.key})
+  const DemoButtons({super.key});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
