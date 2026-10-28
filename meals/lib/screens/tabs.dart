@@ -72,6 +72,8 @@ class _TabsScreenState extends State<TabsScreen> {
       });
     } else if (identifier == 'settings') {
       Navigator.of(context).pushNamed(AppRoutes.settings);
+    } else if (identifier == 'about') {
+      Navigator.of(context).pushNamed(AppRoutes.about);
     }
   }
 

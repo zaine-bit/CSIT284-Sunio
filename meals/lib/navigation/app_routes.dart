@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/filter.dart';
 import 'package:meals/navigation/route_arguments.dart';
+import 'package:meals/screens/about.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meal_details.dart';
 import 'package:meals/screens/meals.dart';
@@ -12,6 +13,7 @@ class AppRoutes {
   static const mealDetails = '/meal-details';
   static const filters = '/filters';
   static const settings = '/settings';
+  static const about = '/about';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -46,6 +48,11 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const SettingsScreen(),
+        );
+      case about:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const AboutScreen(),
         );
       default:
         return null;

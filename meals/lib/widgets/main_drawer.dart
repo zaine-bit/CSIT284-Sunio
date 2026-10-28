@@ -58,6 +58,7 @@ class MainDrawer extends StatelessWidget {
           _entry(context, Icons.restaurant, 'Meals', 'meals'),
           _entry(context, Icons.tune, 'Filters', 'filters'),
           _entry(context, Icons.settings, 'Settings', 'settings'),
+          _entry(context, Icons.info_outline, 'About', 'about'),
         ],
       ),
     );
