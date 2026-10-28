@@ -1,30 +1,44 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:meals/main.dart';
+import 'package:meals/navigation/app_routes.dart';
+import 'package:meals/screens/categories.dart';
+import 'package:meals/screens/tabs.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  testWidgets('Tapping a category opens its meals screen', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: CategoriesScreen(
+          availableMeals: const [],
+          onToggleFavorite: (_) {},
+          isFavorite: (_) => false,
+        ),
+        onGenerateRoute: AppRoutes.onGenerateRoute,
+      ),
+    );
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await tester.tap(find.text('Italian'));
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.widgetWithText(AppBar, 'Italian'), findsOneWidget);
+    expect(find.text('Uh oh ... nothing here!'), findsOneWidget);
+  });
+
+  testWidgets('Drawer opens the statistics screen', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: const TabsScreen(),
+        onGenerateRoute: AppRoutes.onGenerateRoute,
+      ),
+    );
+
+    await tester.tap(find.byTooltip('Open navigation menu'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Statistics'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Meals per category'), findsOneWidget);
   });
 }
