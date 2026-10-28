@@ -70,6 +70,8 @@ class _TabsScreenState extends State<TabsScreen> {
       setState(() {
         _selectedFilters = result ?? _selectedFilters;
       });
+    } else if (identifier == 'settings') {
+      Navigator.of(context).pushNamed(AppRoutes.settings);
     }
   }
 

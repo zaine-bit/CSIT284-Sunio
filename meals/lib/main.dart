@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals/navigation/app_routes.dart';
 import 'package:meals/screens/tabs.dart';
+import 'package:meals/utils/app_settings.dart';
 
-final theme = ThemeData(
-  useMaterial3: true,
-  colorScheme: ColorScheme.fromSeed(
-    brightness: Brightness.dark,
-    seedColor: const Color.fromARGB(255, 131, 57, 0),
-  ),
-  textTheme: GoogleFonts.latoTextTheme(),
-);
+ThemeData buildTheme(Brightness brightness) {
+  final base = ThemeData(brightness: brightness, useMaterial3: true);
+  return ThemeData(
+    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(
+      brightness: brightness,
+      seedColor: const Color.fromARGB(255, 131, 57, 0),
+    ),
+    textTheme: GoogleFonts.latoTextTheme(base.textTheme),
+  );
+}
 
 void main() {
   runApp(const App());
@@ -22,10 +26,17 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: theme,
-      home: const TabsScreen(),
-      onGenerateRoute: AppRoutes.onGenerateRoute,
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeModeNotifier,
+      builder: (context, themeMode, _) {
+        return MaterialApp(
+          theme: buildTheme(Brightness.light),
+          darkTheme: buildTheme(Brightness.dark),
+          themeMode: themeMode,
+          home: const TabsScreen(),
+          onGenerateRoute: AppRoutes.onGenerateRoute,
+        );
+      },
     );
   }
 }

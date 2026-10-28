@@ -4,12 +4,14 @@ import 'package:meals/navigation/route_arguments.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meal_details.dart';
 import 'package:meals/screens/meals.dart';
+import 'package:meals/screens/settings.dart';
 
 class AppRoutes {
   static const home = '/';
   static const meals = '/meals';
   static const mealDetails = '/meal-details';
   static const filters = '/filters';
+  static const settings = '/settings';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -39,6 +41,11 @@ class AppRoutes {
         return MaterialPageRoute<Map<Filter, bool>>(
           settings: settings,
           builder: (_) => FiltersScreen(currentFilters: currentFilters),
+        );
+      case settings:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const SettingsScreen(),
         );
       default:
         return null;
