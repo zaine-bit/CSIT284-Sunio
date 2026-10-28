@@ -69,4 +69,14 @@ class AppRoutes {
         return null;
     }
   }
+
+  static Route<dynamic> onUnknownRoute(RouteSettings settings) {
+    return MaterialPageRoute(
+      settings: settings,
+      builder: (_) => Scaffold(
+        appBar: AppBar(title: const Text('Page not found')),
+        body: Center(child: Text('No screen exists for "${settings.name}".')),
+      ),
+    );
+  }
 }

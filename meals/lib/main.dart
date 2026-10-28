@@ -35,6 +35,7 @@ class App extends StatelessWidget {
           themeMode: themeMode,
           home: const TabsScreen(),
           onGenerateRoute: AppRoutes.onGenerateRoute,
+          onUnknownRoute: AppRoutes.onUnknownRoute,
         );
       },
     );
