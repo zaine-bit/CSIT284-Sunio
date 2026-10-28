@@ -19,50 +19,50 @@ class AppRoutes {
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case meals:
-        final args = settings.arguments as MealsArgs;
+      case AppRoutes.meals:
+        final mealsArgs = settings.arguments as MealsArgs;
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => MealsScreen(
-            title: args.title,
-            meals: args.meals,
-            onToggleFavorite: args.onToggleFavorite,
-            isFavorite: args.isFavorite,
+            title: mealsArgs.title,
+            meals: mealsArgs.meals,
+            onToggleFavorite: mealsArgs.onToggleFavorite,
+            isFavorite: mealsArgs.isFavorite,
           ),
         );
-      case mealDetails:
-        final args = settings.arguments as MealDetailsArgs;
+      case AppRoutes.mealDetails:
+        final detailsArgs = settings.arguments as MealDetailsArgs;
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => MealDetailsScreen(
-            meal: args.meal,
-            onToggleFavorite: args.onToggleFavorite,
-            isFavorite: args.isFavorite,
+            meal: detailsArgs.meal,
+            onToggleFavorite: detailsArgs.onToggleFavorite,
+            isFavorite: detailsArgs.isFavorite,
           ),
         );
-      case filters:
+      case AppRoutes.filters:
         final currentFilters = settings.arguments as Map<Filter, bool>;
         return MaterialPageRoute<Map<Filter, bool>>(
           settings: settings,
           builder: (_) => FiltersScreen(currentFilters: currentFilters),
         );
-      case settings:
+      case AppRoutes.settings:
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const SettingsScreen(),
         );
-      case about:
+      case AppRoutes.about:
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const AboutScreen(),
         );
-      case stats:
-        final args = settings.arguments as StatsArgs;
+      case AppRoutes.stats:
+        final statsArgs = settings.arguments as StatsArgs;
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => StatsScreen(
-            availableMeals: args.availableMeals,
-            favoriteMeals: args.favoriteMeals,
+            availableMeals: statsArgs.availableMeals,
+            favoriteMeals: statsArgs.favoriteMeals,
           ),
         );
       default:
