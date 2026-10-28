@@ -24,3 +24,9 @@ class MealDetailsArgs {
   final void Function(Meal meal) onToggleFavorite;
   final bool Function(Meal meal) isFavorite;
 }
+
+class StatsArgs {
+  const StatsArgs({required this.availableMeals, required this.favoriteMeals});
+  final List<Meal> availableMeals;
+  final List<Meal> favoriteMeals;
+}

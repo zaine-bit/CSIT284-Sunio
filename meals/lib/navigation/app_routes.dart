@@ -6,6 +6,7 @@ import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meal_details.dart';
 import 'package:meals/screens/meals.dart';
 import 'package:meals/screens/settings.dart';
+import 'package:meals/screens/stats.dart';
 
 class AppRoutes {
   static const home = '/';
@@ -14,6 +15,7 @@ class AppRoutes {
   static const filters = '/filters';
   static const settings = '/settings';
   static const about = '/about';
+  static const stats = '/stats';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -53,6 +55,15 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const AboutScreen(),
+        );
+      case stats:
+        final args = settings.arguments as StatsArgs;
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => StatsScreen(
+            availableMeals: args.availableMeals,
+            favoriteMeals: args.favoriteMeals,
+          ),
         );
       default:
         return null;

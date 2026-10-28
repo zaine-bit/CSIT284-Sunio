@@ -3,6 +3,7 @@ import 'package:meals/data/dummy_data.dart';
 import 'package:meals/models/filter.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/navigation/app_routes.dart';
+import 'package:meals/navigation/route_arguments.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/meals.dart';
 import 'package:meals/widgets/main_drawer.dart';
@@ -70,6 +71,14 @@ class _TabsScreenState extends State<TabsScreen> {
       setState(() {
         _selectedFilters = result ?? _selectedFilters;
       });
+    } else if (identifier == 'stats') {
+      Navigator.of(context).pushNamed(
+        AppRoutes.stats,
+        arguments: StatsArgs(
+          availableMeals: _availableMeals,
+          favoriteMeals: _favoriteMeals,
+        ),
+      );
     } else if (identifier == 'settings') {
       Navigator.of(context).pushNamed(AppRoutes.settings);
     } else if (identifier == 'about') {
