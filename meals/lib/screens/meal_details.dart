@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/navigation/app_routes.dart';
 
 class MealDetailsScreen extends StatefulWidget {
   const MealDetailsScreen({
@@ -106,6 +107,16 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
                 ),
               ),
             const SizedBox(height: 24),
+            FilledButton.icon(
+              onPressed: () {
+                Navigator.of(context).popUntil(
+                  ModalRoute.withName(AppRoutes.home),
+                );
+              },
+              icon: const Icon(Icons.home),
+              label: const Text('Back to categories'),
+            ),
+            const SizedBox(height: 32),
           ],
         ),
       ),
