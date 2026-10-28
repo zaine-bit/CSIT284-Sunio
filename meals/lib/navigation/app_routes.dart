@@ -14,13 +14,22 @@ class AppRoutes {
         final args = settings.arguments as MealsArgs;
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => MealsScreen(title: args.title, meals: args.meals),
+          builder: (_) => MealsScreen(
+            title: args.title,
+            meals: args.meals,
+            onToggleFavorite: args.onToggleFavorite,
+            isFavorite: args.isFavorite,
+          ),
         );
       case mealDetails:
         final args = settings.arguments as MealDetailsArgs;
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => MealDetailsScreen(meal: args.meal),
+          builder: (_) => MealDetailsScreen(
+            meal: args.meal,
+            onToggleFavorite: args.onToggleFavorite,
+            isFavorite: args.isFavorite,
+          ),
         );
       default:
         return null;
