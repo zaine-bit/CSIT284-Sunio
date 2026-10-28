@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:meals/models/filter.dart';
 import 'package:meals/navigation/route_arguments.dart';
+import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meal_details.dart';
 import 'package:meals/screens/meals.dart';
 
@@ -7,6 +9,7 @@ class AppRoutes {
   static const home = '/';
   static const meals = '/meals';
   static const mealDetails = '/meal-details';
+  static const filters = '/filters';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -30,6 +33,12 @@ class AppRoutes {
             onToggleFavorite: args.onToggleFavorite,
             isFavorite: args.isFavorite,
           ),
+        );
+      case filters:
+        final currentFilters = settings.arguments as Map<Filter, bool>;
+        return MaterialPageRoute<Map<Filter, bool>>(
+          settings: settings,
+          builder: (_) => FiltersScreen(currentFilters: currentFilters),
         );
       default:
         return null;
