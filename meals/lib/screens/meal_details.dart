@@ -43,7 +43,17 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
         actions: [
           IconButton(
             onPressed: _toggleFavorite,
-            icon: Icon(_isFavorite ? Icons.star : Icons.star_border),
+            icon: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (child, animation) => RotationTransition(
+                turns: Tween<double>(begin: 0.8, end: 1).animate(animation),
+                child: child,
+              ),
+              child: Icon(
+                _isFavorite ? Icons.star : Icons.star_border,
+                key: ValueKey(_isFavorite),
+              ),
+            ),
           ),
         ],
       ),
